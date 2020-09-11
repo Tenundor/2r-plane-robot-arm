@@ -7,6 +7,7 @@ from three_r_robot import ThreeRRobot
 
 def run_program():
     pygame.init()
+    clock = pygame.time.Clock()
     settings = Settings()
     screen = pygame.display.set_mode((settings.screen_width, settings.screen_height))
     pygame.display.set_caption("3R inverse kinematic")
@@ -16,6 +17,8 @@ def run_program():
     while True:
         pf.check_events()
         pf.update_screen(settings, screen, robot_left_conf)
+
+        clock.tick(5)
 
 
 run_program()

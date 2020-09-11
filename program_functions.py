@@ -2,8 +2,6 @@ import sys
 
 import pygame
 
-from three_r_robot import ThreeRRobot
-
 
 def check_events():
     for event in pygame.event.get():
