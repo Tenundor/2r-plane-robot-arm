@@ -25,9 +25,12 @@ class ThreeRRobot:
         self.tau_list = tau_list
         self.length_list = length_list
         self.robot_color = robot_color
-
+        self.joint1_coord = joint1_coord
+        self.update()
         self.joints = [joint1_coord]
 
+    def update(self):
+        self.joints = [self.joint1_coord]
         for count in range(len(self.tau_list)):
             tau_sum = sum(self.tau_list[:count + 1])
             current_joint_x = self.joints[-1][0] + int(
