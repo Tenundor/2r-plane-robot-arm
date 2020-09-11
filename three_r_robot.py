@@ -4,7 +4,7 @@ import math as m
 
 class ThreeRRobot:
 
-    def __init__(self, screen, scale_px_m=None, joint1_coord=None, tau_list=None, length_list=None):
+    def __init__(self, screen, scale_px_m=None, joint1_coord=None, tau_list=None, length_list=None, robot_color=None):
         if scale_px_m is None:
             scale_px_m = 100
         if length_list is None:
@@ -17,10 +17,14 @@ class ThreeRRobot:
         if tau_list is None:
             tau_list = [0, 0, 0]
 
+        if robot_color is None:
+            robot_color = (244, 240, 235)
+
         self.screen = screen
         self.scale_px_m = scale_px_m
         self.tau_list = tau_list
         self.length_list = length_list
+        self.robot_color = robot_color
 
         self.joints = [joint1_coord]
 
@@ -34,4 +38,8 @@ class ThreeRRobot:
             self.joints.append(current_joint)
 
     def blit_me(self):
-        pygame.draw.lines(self.screen, (50, 50, 50), False, self.joints, 10)
+        pygame.draw.rect(self.screen, self.robot_color, (self.joints[0][0] - 40, self.joints[0][0], 80, 20))
+        pygame.draw.lines(self.screen, self.robot_color, False, self.joints, 10)
+
+        for count in range(len(self.tau_list)):
+            pygame.draw.circle(self.screen, self.robot_color, self.joints[count], 15)
