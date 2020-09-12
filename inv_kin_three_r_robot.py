@@ -8,7 +8,7 @@ def inv_kin_3r_robot(end_ef_coord, end_ef_angle_degree, link_length_list):
     joint_3_y = end_ef_coord[1] - link_length_list[2] * m.sin(end_ef_angle)
     links_1_2_diff = link_length_list[0] - link_length_list[1]
 
-    if (joint_3_x ** 2 + joint_3_y ** 2) < links_1_2_diff or (joint_3_x ** 2 + joint_3_y ** 2) > sum(link_length_list):
+    if (joint_3_x ** 2 + joint_3_y ** 2) < links_1_2_diff ** 2 or (joint_3_x ** 2 + joint_3_y ** 2) > sum(link_length_list) ** 2:
         robot_config = {'robot_config': {'left_robot_tau_list': [0, 0, 0],
                                          'right_robot_tau_list': [0, 0, 0]},
                         'work_space_out': True}

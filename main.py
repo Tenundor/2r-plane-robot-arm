@@ -14,12 +14,12 @@ def run_program():
     screen = pygame.display.set_mode((settings.screen_width, settings.screen_height))
     pygame.display.set_caption("3R inverse kinematic")
 
-    test_robot_length_list = [1.1, 1, 0.9]
-    test_robot_end_eff_coord = [1.5, 0]
+    test_robot_length_list = [3, 2, 1]
+    test_robot_end_eff_coord = [4, 2]
     test_robot_end_eff_angle = 0
     test_robot_tau_list = inv_kin_3r_robot(test_robot_end_eff_coord, test_robot_end_eff_angle, test_robot_length_list)
-    robot_left_conf = ThreeRRobot(screen, tau_list=test_robot_tau_list['robot_config']['left_robot_tau_list'],
-                                  length_list=test_robot_length_list)
+    robot_left_conf = ThreeRRobot(screen, tau_list=test_robot_tau_list['robot_config']['right_robot_tau_list'],
+                                  length_list=test_robot_length_list, scale_px_m=50)
 
     while True:
         pf.check_events()
